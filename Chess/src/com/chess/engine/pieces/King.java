@@ -8,6 +8,7 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import com.chess.engine.pieces.Piece.PieceType;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -23,7 +24,7 @@ public class King extends Piece {
 	 * @param piecePosition
 	 * @param pieceAlliance
 	 */
-	King(int piecePosition, Alliance pieceAlliance) {
+	public King(final Alliance pieceAlliance, final int piecePosition) {
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -56,6 +57,12 @@ public class King extends Piece {
 		}
 		
 		return ImmutableList.copyOf(legalMoves);
+	}
+	
+	
+	@Override
+	public String toString(){
+		return PieceType.KING.toString();
 	}
 	
 	//Edge case methods

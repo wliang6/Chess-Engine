@@ -8,6 +8,7 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import com.chess.engine.pieces.Piece.PieceType;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -24,7 +25,7 @@ public class Knight extends Piece{
 	 * @param piecePosition
 	 * @param pieceAlliance
 	 */
-	Knight(final int piecePosition, final Alliance pieceAlliance) {
+	public Knight(final Alliance pieceAlliance, final int piecePosition) {
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -60,6 +61,12 @@ public class Knight extends Piece{
 			}
 		}
 		return ImmutableList.copyOf(legalMoves);
+	}
+	
+	
+	@Override
+	public String toString(){
+		return PieceType.KNIGHT.toString();
 	}
 	
 	

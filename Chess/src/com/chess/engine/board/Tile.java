@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.chess.engine.pieces.Piece;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableMap;
 
 /**
@@ -51,6 +52,12 @@ public abstract class Tile {
 			super(tileCoordinate);
 		}
 
+		//Empty Tile shows up as hyphen
+		@Override
+		public String toString(){
+			return "-";
+		}
+		
 		@Override
 		public boolean isTileOccupied() {
 			return false;
@@ -74,6 +81,14 @@ public abstract class Tile {
 			this.pieceOnTile = piece; 
 		}
 
+		
+		//Black piece shows as upper-case, white pieces show as lower-case
+		@Override
+		public String toString(){
+			return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
+				getPiece().toString();
+		}
+		
 		@Override
 		public boolean isTileOccupied() {
 			return true;

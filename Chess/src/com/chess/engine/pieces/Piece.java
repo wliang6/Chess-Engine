@@ -25,6 +25,10 @@ public abstract class Piece {
 		this.isFirstMove = false; //TODO more work
 	}
 	
+	public int getPiecePosition(){
+		return this.piecePosition;
+	}
+	
 	public Alliance getPieceAlliance(){
 		return this.pieceAlliance;
 	}
@@ -34,9 +38,29 @@ public abstract class Piece {
 	}
 	
 	
-	//all the pieces created would override this and defines its own moves
+	//All the pieces created would override this and defines its own moves
 	//You can use a list (ordered and get values at particular value), set(cannot have duplicate entries; unordered), or Collection 
 	public abstract Collection<Move> calculateLegalMoves(final Board board);
+	
 
-
+	public enum PieceType{
+		PAWN("P"), 
+		KNIGHT("N"),
+		BISHOP("B"),
+		ROOK("R"),
+		QUEEN("Q"),
+		KING("K");
+		
+		private String pieceName;
+		PieceType(final String pieceName){
+			this.pieceName = pieceName;
+		}
+		
+		@Override
+		public String toString(){
+			return this.pieceName;
+		}
+		
+	}
+	
 }

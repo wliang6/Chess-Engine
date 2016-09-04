@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import com.chess.engine.pieces.Piece.PieceType;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -20,10 +20,11 @@ public class Rook extends Piece{
 
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-8, -1, 1, 8};
 	/**
+	 * Constructor
 	 * @param piecePosition
 	 * @param pieceAlliance
 	 */
-	Rook(int piecePosition, Alliance pieceAlliance) {
+	public Rook(final Alliance pieceAlliance, final int piecePosition) {
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -58,6 +59,12 @@ public class Rook extends Piece{
 		return ImmutableList.copyOf(legalMoves);
 	}
 
+	
+	@Override
+	public String toString(){
+		return PieceType.ROOK.toString();
+	}
+	
 	private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateDestinationOffset){
 		return BoardUtils.FIRST_COLUMN[currentPosition] && candidateDestinationOffset == -1;
 	}

@@ -4,7 +4,7 @@ package com.chess.engine.pieces;
  * Chess
  * @author Winnie Aug 25, 2016
  * Alliance.java
- * Alliance gives the directionality and the color of the piece.
+ * Alliance gives the directionality and the color of the player chess piece.
  */
 public enum Alliance {
 	WHITE 

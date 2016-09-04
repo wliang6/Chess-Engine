@@ -8,6 +8,7 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Move.MajorMove;
+import com.chess.engine.pieces.Piece.PieceType;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -20,10 +21,10 @@ public class Pawn extends Piece {
 	private final static int[] CANDIDATE_MOVE_COORDINATES = {8, 16, 7, 9}; //8 only works for black pawn (top portion of board) // -8 works for the white pawn (bottom portion of the board)
 	//16 is the jump you make during pawn's first move
 	/**
-	 * @param piecePosition
 	 * @param pieceAlliance
+	 * @param piecePosition
 	 */
-	Pawn(final int piecePosition, final Alliance pieceAlliance) {
+	public Pawn(final Alliance pieceAlliance, final int piecePosition) {
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -81,4 +82,10 @@ public class Pawn extends Piece {
 		return ImmutableList.copyOf(legalMoves);
 	}
 
+	
+	
+	@Override
+	public String toString(){
+		return PieceType.PAWN.toString();
+	}
 }

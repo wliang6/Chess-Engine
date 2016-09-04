@@ -8,6 +8,7 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import com.chess.engine.pieces.Piece.PieceType;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -21,10 +22,10 @@ public class Queen extends Piece{
 	private final static int [] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -8, -7, -1, 1, 7, 8, 9};
 
 	/**
-	 * @param piecePosition
 	 * @param pieceAlliance
+	 * @param piecePosition
 	 */
-	Queen(final int piecePosition, final Alliance pieceAlliance) {
+	public Queen(final Alliance pieceAlliance, final int piecePosition) {
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -59,6 +60,11 @@ public class Queen extends Piece{
 			}
 		}
 		return ImmutableList.copyOf(legalMoves);
+	}
+	
+	@Override
+	public String toString(){
+		return PieceType.QUEEN.toString();
 	}
 	
 	public static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
