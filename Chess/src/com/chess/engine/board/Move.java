@@ -21,6 +21,14 @@ public abstract class Move {
 		this.destinationCoordinate = destinationCoordinate;
 	}
 	
+	/**
+	 * Purpose: Returns the destination coordinate
+	 * int
+	 */
+	public int getDestinationCoordinate() {
+		return this.destinationCoordinate;
+	}
+	
 	//declaring some subclasses
 	public static final class MajorMove extends Move{
 		public MajorMove(final Board board, final Piece movedPiece, final int destinationCoordinate){
@@ -36,5 +44,14 @@ public abstract class Move {
 		}
 		
 	}
+
+	/**
+	 * Purpose: 
+	 * Board
+	 */
+	public Board execute() {
+		return null;
+	}
+
 	
 }

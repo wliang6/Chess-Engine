@@ -14,6 +14,9 @@ import com.chess.engine.pieces.Pawn;
 import com.chess.engine.pieces.Piece;
 import com.chess.engine.pieces.Queen;
 import com.chess.engine.pieces.Rook;
+import com.chess.engine.player.BlackPlayer;
+import com.chess.engine.player.Player;
+import com.chess.engine.player.WhitePlayer;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -30,6 +33,10 @@ public class Board {
 	private final Collection<Piece> blackPieces;
 	private final Collection<Piece> whitePieces;
 	
+	private final WhitePlayer whitePlayer;
+	private final BlackPlayer blackPlayer;
+	private final Player currentPlayer;
+	
 
 	//Constructor
 	private Board(Builder builder){
@@ -40,7 +47,9 @@ public class Board {
 		final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.whitePieces);
 		final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.blackPieces);
 				
-				
+		this.whitePlayer = new WhitePlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);		
+		this.blackPlayer = new BlackPlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
+		this.currentPlayer = null;
 	}
 	
 	//Determines what the board looks like when it turns into a string
@@ -57,6 +66,25 @@ public class Board {
 		return builder.toString();
 	}
 
+	public Player whitePlayer() {
+		return this.whitePlayer;
+	}
+
+	public Player blackPlayer() {
+		return this.blackPlayer;
+	}
+	
+	public Player currentPlayer() {
+		return this.currentPlayer;
+	}
+	
+	public Collection<Piece> getBlackPieces(){
+		return this.blackPieces;
+	}
+	
+	public Collection<Piece> getWhitePieces(){
+		return this.whitePieces;
+	}
 
 	/**
 	 * Purpose: Prints outs the board in ASCII text
@@ -188,5 +216,9 @@ public class Board {
 			return new Board(this); //creates immutable board based on builder
 		}
 	}
+
+
+
+
 	
 }
